@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->date('date')->nullable();
             $table->string('name', 100);
+            $table->string('description', 100);
+            $table->integer('type');
             $table->string('file_path');
             $table->timestamps();
 
