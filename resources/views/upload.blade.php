@@ -19,7 +19,7 @@
 <body>
     <div class="container mt-5">
         <form action="{{route('fileUpload')}}" method="post" enctype="multipart/form-data">
-          <h3 class="text-center mb-5">Upload File in Laravel</h3>
+          <h3 class="mb-5 text-center">Upload File in Laravel</h3>
             @csrf
             @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -39,15 +39,52 @@
                 <input type="date" name="date" id="date">
             </div>
             <div>
+<<<<<<< HEAD
 
+=======
+                <input type="date" name="date" id="date">
+>>>>>>> 87ed42dd8bd69950e5c1554a424288c91dc7ce80
             </div>
             <div class="custom-file">
                 <input type="file" name="file" class="custom-file-input" id="chooseFile">
                 <label class="custom-file-label" for="chooseFile">Select file</label>
             </div>
-            <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
+            <button type="submit" name="submit" class="mt-4 btn btn-primary btn-block">
                 Upload Files
             </button>
+
+            <div class="mb-3 input-group">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+
+              <div class="mb-3 input-group">
+                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">@example.com</span>
+              </div>
+
+              <label for="basic-url" class="form-label">Your vanity URL</label>
+              <div class="mb-3 input-group">
+                <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="mb-3 input-group">
+                <span class="input-group-text">$</span>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">.00</span>
+              </div>
+
+              <div class="mb-3 input-group">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-text">With textarea</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+              </div>
         </form>
 
 

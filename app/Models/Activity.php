@@ -4,17 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Team extends Model
+
+class Activity extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
-
-
-    public function activity(): HasMany
+    public function team(): BelongsTo
     {
-        return $this->hasMany(Activity::class);
+        return $this->belongsTo(Team::class);
     }
 }

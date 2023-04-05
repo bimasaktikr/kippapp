@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ActivitiesController;
+
+use App\Http\Livewire\UploadFile;
+use App\Http\Livewire\Todos;
+use App\Http\Livewire\Activities;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +19,10 @@ use App\Http\Controllers\ActivitiesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 
 Route::middleware([
     'auth:sanctum',
@@ -26,7 +32,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
-    Route::get('/upload', [ActivitiesController::class, 'createForm']);
-    Route::post('/upload', [ActivitiesController::class, 'fileUpload'])->name('fileUpload');
+    Route::get('activities', Activities::class);
 });
+
+Route::get('UploadFile', UploadFile::class);
