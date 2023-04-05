@@ -38,6 +38,9 @@
             <div>
                 <input type="date" name="date" id="date">
             </div>
+            <div>
+
+            </div>
             <div class="custom-file">
                 <input type="file" name="file" class="custom-file-input" id="chooseFile">
                 <label class="custom-file-label" for="chooseFile">Select file</label>
@@ -46,6 +49,9 @@
                 Upload Files
             </button>
         </form>
+
+
+        @livewire('add-form')
     </div>
 </body>
 </html>
