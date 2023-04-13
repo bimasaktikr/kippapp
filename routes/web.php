@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ActivitiesController;
+use App\Http\Controllers\PageController;
 
 use App\Http\Livewire\UploadFile;
 use App\Http\Livewire\Todos;
@@ -19,9 +20,9 @@ use App\Http\Livewire\Activities;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::middleware([
@@ -35,4 +36,4 @@ Route::middleware([
     Route::get('activities', Activities::class);
 });
 
-Route::get('UploadFile', UploadFile::class);
+Route::get('/public/{id}', [PageController::class, 'show']);

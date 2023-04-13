@@ -1,6 +1,6 @@
 <x-slot name="header">
     <h2 class="text-xl font-semibold leading-tight text-gray-800">
-        Manage activitys (Laravel 8 Jetstream Livewire CRUD Example - Tutsmake.com)
+        Manage activity (Laravel 8 Jetstream Livewire CRUD Example - Tutsmake.com)
     </h2>
 </x-slot>
 <div class="py-12">
@@ -21,7 +21,11 @@
             @if ($isOpen)
                 @include('livewire.create')
             @endif
-            <table class="w-full table-fixed">
+            @if ($isPreviewOpen)
+                @include('livewire.preview')
+            @endif
+
+            <table id="myTable" class="w-full table-fixed">
                 <thead>
                     <tr class="bg-gray-100">
                         <th class="w-20 px-4 py-2">No.</th>
@@ -43,10 +47,21 @@
                             <td class="px-4 py-2 border">{{ $activity->file_path }}</td>
                             <td class="px-4 py-2 border">{{ $activity->type }}</td>
                             <td class="px-4 py-2 border">
-                                <button wire:click="edit({{ $activity->id }})"
-                                    class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">Edit</button>
-                                <button wire:click="delete({{ $activity->id }})"
-                                    class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Delete</button>
+                                {{-- <i class="bi-alarm"></i> --}}
+                                <div class="btn-group btn-group-sm pe-2" role="group" aria-label="Basic example">
+                                    <button wire:click="preview({{ $activity->id }})" target="_blank"
+                                        class="px-2 py-1 mx-1 font-bold text-white bg-blue-500 rounded bi bi-eye hover:bg-blue-700"></button>
+                                    <button wire:click="copyToClipboard({{ $activity->id }})"
+                                            class="px-2 py-1 text-white bg-blue-500 rounded mx-1font-bold bi bi-clipboard hover:bg-blue-700">
+                                            @if(session()->has('copied'))
+                                                <div>Copied!</div>
+                                            @endif
+                                    </button>
+                                    <button wire:click="edit({{ $activity->id }})"
+                                        class="px-2 py-1 mx-1 font-bold text-white bg-blue-500 rounded bi bi-pencil hover:bg-blue-700"></button>
+                                    <button wire:click="delete({{ $activity->id }})"
+                                        class="px-2 py-1 font-bold text-white bg-red-500 rounded bi bi-trash hover:bg-red-700"></button>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -55,6 +70,7 @@
         </div>
     </div>
 </div>
+
 
 {{-- @livewireScripts --}}
 {{-- @stack('scripts') --}}
